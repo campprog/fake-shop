@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header [products] = 'cardProducts' (buttonClicked)="isSideBarOpen = !isSideBarOpen"></app-header>
 
-<app-product-list></app-product-list>
+<app-product-list [products] = 'products' (productSelected)="addProductToCart($event)"></app-product-list>
 
-<app-cart-summary></app-cart-summary>
+<app-cart-summary [cardProducts]="cardProducts" (buttonClicked)="onBuyProducts()"></app-cart-summary>
 
-<app-cart-sidebar></app-cart-sidebar>
+<app-cart-sidebar [isOpen]="isSideBarOpen" [cardProducts] = 'cardProducts' (productRemoved)="removeProductToCard($event)"></app-cart-sidebar>

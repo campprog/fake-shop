@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
+import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-cart-summary',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './cart-summary.component.css',
 })
 export class CartSummaryComponent {
+  @Input() cardProducts:IProduct[]=[];
+  @Output() buttonClicked = new  EventEmitter<void>();
   onBuyClick() {
-    throw new Error('Method not implemented.');
+     this.buttonClicked.emit();
   }
 }

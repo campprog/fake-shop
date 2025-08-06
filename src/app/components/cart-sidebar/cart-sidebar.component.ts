@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-cart-sidebar',
@@ -7,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './cart-sidebar.component.css',
 })
 export class CartSidebarComponent {
-  isOpen = false;
+  @Input() isOpen = false;
+  @Input() cardProducts:IProduct[] = [];
 
-  onCloseClick() {}
+  @Output() productRemoved = new EventEmitter<number>();
+
+  onCloseClick() {
+    this.isOpen = false;
+  }
+
+  onRemoveProduct(productIndex:number) {
+    this.productRemoved.emit(productIndex);
+  }
 }

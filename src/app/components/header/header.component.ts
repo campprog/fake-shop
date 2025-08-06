@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  onCartButtonClick() {}
+  @Input() products:IProduct[]= [];
+  @Output() buttonClicked = new EventEmitter<void>();
+  onCartButtonClick() {
+    this.buttonClicked.emit();
+  }
 }
+
