@@ -1,3 +1,4 @@
+@let cartProducts = (_productsManagerService.cartProducts$| async);
 <footer class="cart-summary-bar">
-  <button class="buy-button" (click)="onBuyClick()">Comprar {{cardProducts.length}}</button>
+  <button class="buy-button" (click)="onBuyClick(cartProducts?.length)" [disabled] ="!cartProducts?.length">Comprar {{cartProducts?.length}}</button>
 </footer>

@@ -1,3 +1,4 @@
+@let cardProducts = (_productsManagerService.cartProducts$ | async);
 <div
   class="cart-sidebar-overlay"
   [class.show]="isOpen"
@@ -10,7 +11,7 @@
     <button class="close-button" (click)="onCloseClick()">&times;</button>
   </div>
   <div class="cart-sidebar-content">
-    @if(cardProducts.length === 0) {
+    @if(cardProducts?.length === 0) {
       <div class="empty-cart-message">Seu carrinho está vazio.</div>
     }
     <div>

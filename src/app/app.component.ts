@@ -20,29 +20,13 @@ import { IProduct } from './interfaces/product.interface';
 export class AppComponent {
   private readonly _productsService = inject(ProductsService);
 
-  products:IProduct[] = [];
-  cardProducts:IProduct[] =[];
   isSideBarOpen = false;
   ngOnInit() {
     this.getProducts();
   }
 
   getProducts() {
-    this._productsService.getProducts().subscribe((productResponse) => {
-      this.products = productResponse;
-    });
+    this._productsService.getProducts().subscribe();
   }
 
-  addProductToCart(product: IProduct){
-    this.cardProducts.push(product);
-    console.log(this.cardProducts);
-  }
-
-  removeProductToCard(productIndex: number) {
-    this.cardProducts.splice(productIndex, 1);
-  }
-
-  onBuyProducts() {
-    alert(`Comprou ${this.cardProducts.length} produtos`);
-  }
 }
